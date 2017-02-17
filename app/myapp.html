@@ -1,0 +1,65 @@
+<h2>The DatePicker Example</h2>
+<hr>
+<table class="table table-bordered table-striped">
+    <tr>
+        <td>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <td>Person Id:</td>
+                    <td>
+                        <input type="text" class="form-control" 
+                        [(ngModel)]="person.personId"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Person Name:</td>
+                    <td>
+                        <input type="text" class="form-control" 
+                        [(ngModel)]="person.personName"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Registration Date:</td>
+                    <td>
+                        <datepicker
+                         [(ngModel)]="person.registrationDate"
+                          [showWeeks]="true"
+                          [minDate]="minDate"
+                          [dateDisabled]="disabledDate"
+                          [onlyCurrentMonth]=true
+                        ></datepicker>
+                       
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="New" 
+                        (click)="clear()"/>
+                    </td>
+                    <td>
+                        <input type="button" value="Save" 
+                        (click)="save()"/>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>Person Id</td>
+                    <td>Person Name</td>
+                    <td>Registration Date</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of persons">
+                    <td>{{p.personId}}</td>
+                    <td>{{p.personName}}</td>
+                    <td>{{p.registrationDate|date:'longDate'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </tr>
+</table>
